@@ -1,0 +1,19 @@
+# 依赖
+node_modules/
+
+# 构建与打包产物
+out/
+release/
+*.dmg
+*.blockmap
+
+# 编译缓存
+*.tsbuildinfo
+.vite/
+
+# 系统文件
+.DS_Store
+
+# 日志
+*.log
+logs/

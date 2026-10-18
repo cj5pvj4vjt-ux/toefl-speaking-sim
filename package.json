@@ -1,0 +1,95 @@
+{
+  "name": "toefl-speaking-sim",
+  "version": "1.0.0",
+  "description": "TOEFL Speaking 全真模拟考试系统 (Electron + React + TypeScript)",
+  "main": "./out/main/main.js",
+  "author": "TOEFL Sim",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "dev": "electron-vite dev",
+    "start": "electron-vite preview",
+    "build": "electron-vite build",
+    "typecheck:node": "tsc -p tsconfig.node.json --noEmit",
+    "typecheck:web": "tsc -p tsconfig.web.json --noEmit",
+    "typecheck": "npm run typecheck:node && npm run typecheck:web",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "rebuild": "electron-builder install-app-deps",
+    "dist:mac": "electron-vite build && electron-builder --mac --arm64",
+    "dist:mac:universal": "electron-vite build && electron-builder --mac --universal"
+  },
+  "dependencies": {
+    "pdfkit": "^0.20.2",
+    "tesseract.js": "^7.0.0",
+    "zod": "^4.6.5"
+  },
+  "devDependencies": {
+    "@types/node": "^24.10.1",
+    "@types/pdfkit": "^0.17.6",
+    "@types/react": "^19.2.2",
+    "@types/react-dom": "^19.2.2",
+    "@vitejs/plugin-react": "^5.2.0",
+    "autoprefixer": "^10.4.21",
+    "electron": "^44.5.1",
+    "electron-builder": "^26.15.3",
+    "electron-vite": "^5.0.0",
+    "jsdom": "^28.0.0",
+    "pdfjs-dist": "^6.4.299",
+    "pngjs": "^7.0.0",
+    "postcss": "^8.5.6",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "recharts": "^3.10.1",
+    "tailwindcss": "^3.4.17",
+    "typescript": "^5.9.3",
+    "vite": "^7.3.6",
+    "vitest": "^4.1.11",
+    "zustand": "^5.0.15"
+  },
+  "build": {
+    "appId": "com.toeflsim.speaking",
+    "productName": "TOEFL 口语模考",
+    "directories": {
+      "output": "release",
+      "buildResources": "resources"
+    },
+    "files": [
+      "out/**/*",
+      "package.json",
+      "node_modules/**/*"
+    ],
+    "asarUnpack": [
+      "**/node_modules/tesseract.js/**",
+      "**/node_modules/tesseract.js-core/**"
+    ],
+    "mac": {
+      "target": [
+        {
+          "target": "dmg",
+          "arch": [
+            "arm64"
+          ]
+        },
+        {
+          "target": "dir",
+          "arch": [
+            "arm64"
+          ]
+        }
+      ],
+      "category": "public.app-category.education",
+      "hardenedRuntime": false,
+      "gatekeeperAssess": false,
+      "identity": null,
+      "extendInfo": {
+        "NSMicrophoneUsageDescription": "TOEFL Speaking 模拟考试需要使用麦克风录制你的口语回答。"
+      },
+      "icon": "resources/icon.icns"
+    },
+    "dmg": {
+      "artifactName": "TOEFL-Speaking-Sim-${version}-${arch}.${ext}"
+    },
+    "npmRebuild": false
+  }
+}
