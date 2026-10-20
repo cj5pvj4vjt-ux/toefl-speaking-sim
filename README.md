@@ -184,3 +184,21 @@ npx vitest run tests/live-llm.test.ts
 - 未做代码签名与公证，首次启动需手动放行
 - 扫描版 PDF 的 OCR 依赖 tesseract.js 运行时从 CDN 下载英文语言包，首次使用需联网
 - 整场总结在少数情况下需要 1–2 次重试（推理型模型偶尔不按 JSON 输出），已有自动修复兜底
+
+---
+
+## 11. 安装包下载
+
+`v1.0.0` 的 DMG 已作为 [GitHub Release](https://github.com/cj5pvj4vjt-ux/toefl-speaking-sim/releases) 附件发布，无需 clone 仓库即可下载：
+
+- **文件**：`TOEFL-Speaking-Sim-1.0.0-arm64.dmg`（macOS arm64）
+- **SHA-256**：`373dbbd3fc378ad21a5fea78317ea3a0b43892e31a0c51281dc1fb14eb5fa400`
+- 未签名，首次打开需右键 →「打开」放行；麦克风权限在「系统设置 → 隐私与安全性」中授予
+
+安装包不进入 git 历史（`*.dmg` 已在 `.gitignore` 中排除），只作为 Release 附件分发。
+
+---
+
+## 12. 许可证
+
+[MIT](./LICENSE) © 2026 TOEFL Sim
